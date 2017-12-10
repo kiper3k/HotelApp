@@ -33,7 +33,7 @@ public class CSVUtilsRooms {
     BufferedWriter bw;
     
     public CSVUtilsRooms(){
-        this.csvFile = "/home/kiper/Dokumenty/UJ/Projektowanie obiektowe/HotelReservationSystem/src/test/resources/rooms.csv";
+        this.csvFile = "resources/rooms.csv";
         this.cvsSplitBy = ",";
     }
     

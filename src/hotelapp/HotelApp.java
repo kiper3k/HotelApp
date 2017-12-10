@@ -45,20 +45,23 @@ public class HotelApp {
         
         
 
-//        CSVUtilsUsers csvUtilsUsers = new CSVUtilsUsers();
-//        users = csvUtilsUsers.readCSV();
+        CSVUtilsUsers csvUtilsUsers = new CSVUtilsUsers();
+        List<User> users = new ArrayList<>();
+        users = csvUtilsUsers.readCSV();
         
-//        List<User> users = new ArrayList<User>();
-//        users = csvUtilsUsers.readCSV();
-//        for(int i=0; i<users.size(); i++){
-//            System.out.println(users.get(i));
-//        }
+        users = csvUtilsUsers.readCSV();
+        for(int i=0; i<users.size(); i++){
+            System.out.println(users.get(i));
+        }
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input;
         while (true) {
             input = br.readLine();
+            
+            System.out.println(input);
+            System.out.println(input.toString() == "add");
             
             if (input == "add"){
                 //collect info

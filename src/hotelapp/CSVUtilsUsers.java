@@ -34,7 +34,7 @@ public class CSVUtilsUsers {
     BufferedWriter bw;
     
     public CSVUtilsUsers(){
-        this.csvFile = "/home/kiper/Dokumenty/UJ/Projektowanie obiektowe/HotelReservationSystem/src/test/resources/users.csv";
+        this.csvFile = "resources/users.csv";
         this.cvsSplitBy = ",";
     }
     
