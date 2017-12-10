@@ -36,11 +36,6 @@ public class HotelApp {
             System.out.println(rooms.get(i));
         }
         
-        rooms = hotel.getRooms();
-        for(int i=0; i<rooms.size(); i++){ 
-            System.out.println(rooms.get(i));
-        }
-        
         hotel.saveRooms(csvUtilsRooms);
         
         
@@ -57,21 +52,30 @@ public class HotelApp {
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input;
+        String[] room;
+        OUTER:
         while (true) {
             input = br.readLine();
-            
-            System.out.println(input);
-            System.out.println(input.toString() == "add");
-            
-            if (input == "add"){
-                //collect info
-                hotel.addRoom("Room4", 3, 500);
-            }
-            else if (input == "list") {
-                rooms = hotel.getRooms();
-                for(int i=0; i<rooms.size(); i++){ 
-                    System.out.println(rooms.get(i));
-                }
+            switch (input) {
+                case "add":
+                    System.out.println("Enter room info:");
+                    room = br.readLine().split(" ");
+//                    hotel.addRoom("Room4", 3, 500);
+                    hotel.addRoom(room[0], Integer.parseInt(room[1]), Float.parseFloat(room[2]));
+                    break;
+                case "remove":
+                    room = br.readLine().split(" ");
+                    hotel.deleteRoom(room[0]);
+                case "rooms":
+                    rooms = hotel.getRooms();
+                    for(int i=0; i<rooms.size(); i++){
+                        System.out.println(rooms.get(i));
+                    }   break;
+                case "exit":
+                    hotel.saveRooms(csvUtilsRooms);
+                    break OUTER;
+                default:
+                    break;
             }
         }
     }
