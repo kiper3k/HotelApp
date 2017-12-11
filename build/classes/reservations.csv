@@ -1,1 +1,2 @@
-reservationId,startDate,endDat,clientId
+reservationId,startDate,endDat,clientId,roomName
+1,2017-12-27,2018-01-03,3,Room3

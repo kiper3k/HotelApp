@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author kiper
  */
-public class CSVUtilsRooms {
+public class CSVUtilsRooms implements CSVUtils {
 //        implements CSVUtils {
     
     BufferedReader br = null;
@@ -37,6 +37,7 @@ public class CSVUtilsRooms {
         this.cvsSplitBy = ",";
     }
     
+    @Override
     public List readCSV(){
         List<RoomInfo> rooms = new ArrayList<>();
 //        int id;

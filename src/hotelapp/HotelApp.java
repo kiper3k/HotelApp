@@ -35,23 +35,23 @@ public class HotelApp {
         hotel.loadClients(csvUtilsClients);
         hotel.loadEmployees(csvUtilsEmployees);
         
-        List<RoomInfo> rooms = new ArrayList<>();
-        rooms = hotel.getRooms();
-        for(int i=0; i<rooms.size(); i++){
-            System.out.println(rooms.get(i));
-        } 
+//        List<RoomInfo> rooms = new ArrayList<>();
+//        rooms = hotel.getRooms();
+//        for(int i=0; i<rooms.size(); i++){
+//            System.out.println(rooms.get(i));
+//        } 
 
-        List<Client> clients = new ArrayList<>();
-        clients = hotel.getClients();
-        for(int i=0; i<clients.size(); i++){
-            System.out.println(clients.get(i));
-        }
+//        List<Client> clients = new ArrayList<>();
+//        clients = hotel.getClients();
+//        for(int i=0; i<clients.size(); i++){
+//            System.out.println(clients.get(i));
+//        }
         
-        List<Employee> employees = new ArrayList<>();
-        employees = hotel.getEmployees();
-        for(int i=0; i<employees.size(); i++){
-            System.out.println(employees.get(i));
-        }
+//        List<Employee> employees = new ArrayList<>();
+//        employees = hotel.getEmployees();
+//        for(int i=0; i<employees.size(); i++){
+//            System.out.println(employees.get(i));
+//        }
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -74,9 +74,9 @@ public class HotelApp {
                     hotel.deleteRoom(room[0]);
                     break;
                 case "rooms":
-                    rooms = hotel.getRooms();
-                    for(int i=0; i<rooms.size(); i++){
-                        System.out.println(rooms.get(i));
+//                    rooms = hotel.getRooms();
+                    for(int i=0; i<hotel.getRooms().size(); i++){
+                        System.out.println(hotel.getRooms().get(i));
                     }   
                     break;
                 case "add client":
@@ -91,13 +91,8 @@ public class HotelApp {
                     }
                     break;
                 case "employees":
-                    for(int i=0; i<hotel.getClients().size(); i++) {
-                        System.out.println(hotel.getClients().get(i));
-                    }
-                    break;
-                case "users":
-                    for(int i=0; i<clients.size(); i++){
-                        System.out.println(clients.get(i));
+                    for(int i=0; i<hotel.getEmployees().size(); i++) {
+                        System.out.println(hotel.getEmployees().get(i));
                     }
                     break;
                 case "exit":
