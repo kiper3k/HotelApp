@@ -20,7 +20,7 @@ import java.time.LocalDate;
  *
  * @author kiper
  */
-public class CSVUtilsUsers {
+public class CSVUtilsEmployees {
     
     BufferedReader br = null;
     
@@ -33,13 +33,13 @@ public class CSVUtilsUsers {
     
     BufferedWriter bw;
     
-    public CSVUtilsUsers(){
-        this.csvFile = "resources/users.csv";
+    public CSVUtilsEmployees(){
+        this.csvFile = "resources/employees.csv";
         this.cvsSplitBy = ",";
     }
     
     public List readCSV(){
-        List<User> users = new ArrayList<>();
+        List<User> employees = new ArrayList<>();
         
         int id;
         String firstName;
@@ -65,7 +65,7 @@ public class CSVUtilsUsers {
 //                        Integer.parseInt(room[1]), 
 //                        Float.parseFloat(room[2])));
                 
-                users.add(new User(id, firstName, lastName, birthDate,
+                employees.add(new Employee(id, firstName, lastName, birthDate,
                         login, password));
 
             }
@@ -84,12 +84,12 @@ public class CSVUtilsUsers {
             }
         }
         
-        return users;
+        return employees;
         
     }
     
     
-    public void saveCSV(List<User> users){
+    public void saveCSV(List<Employee> employees){
         
         int id;
         String firstName;
@@ -106,13 +106,13 @@ public class CSVUtilsUsers {
             line = "id,firstName,lastName,birthDate,login,password";
             bw.write(line, 0, line.length());
             bw.newLine();
-            for (int i=0; i<users.size(); i++){
-                id = users.get(i).getId();
-                firstName = users.get(i).getFirstName();
-                lastName = users.get(i).getLastName();
-                birthDate = users.get(i).getBirthDate();
-                login = users.get(i).getLogin();
-                password = users.get(i).getPassword();
+            for (int i=0; i<employees.size(); i++){
+                id = employees.get(i).getId();
+                firstName = employees.get(i).getFirstName();
+                lastName = employees.get(i).getLastName();
+                birthDate = employees.get(i).getBirthDate();
+                login = employees.get(i).getLogin();
+                password = employees.get(i).getPassword();
                 
                 line = Integer.toString(id) + "," + firstName + "," + lastName
                         + "," + birthDate + "," + login + "," + password;

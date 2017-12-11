@@ -1,6 +1,7 @@
 package hotelapp;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,16 +14,10 @@ import java.util.function.Predicate;
  */
 public class HotelImpl implements Hotel {
 
-//    private final RoomInfoCsvDeserializer deserializer = new RoomInfoCsvDeserializer();
-//
-//    private final RoomInfoCsvSerializer serializer = new RoomInfoCsvSerializer();
-
     private final List<RoomInfo> roomInfoStore = new ArrayList<>();
-
-//    private final PriceService priceService = PriceServiceImpl.getInstance();
-
-//    private final ClientManager clientManager = ClientManagerImpl.getInstance();
-
+    private final List<Client> clients = new ArrayList<>();
+    private final List<Employee> employees = new ArrayList<>();
+    private final List reservations = new ArrayList<>();
 
     @Override
     public void loadRooms(CSVUtilsRooms csvUtilsRooms) throws IOException {
@@ -30,7 +25,6 @@ public class HotelImpl implements Hotel {
         roomInfoStore.addAll(csvUtilsRooms.readCSV());
     }
     
-
     @Override
     public void saveRooms(CSVUtilsRooms csvUtilsRooms) throws IOException {
          csvUtilsRooms.saveCSV(roomInfoStore);
@@ -55,43 +49,86 @@ public class HotelImpl implements Hotel {
     public void deleteRoom(String name) {
         roomInfoStore.removeIf(nameEqualTo(name));
     }
-
-//    @Override
-//    public List<ReservationInfo> findFreeRooms(Period period, List<Integer> rooms) {
-//        LocalDate startDate = period.getStartDate();
-//        LocalDate endDate = period.getEndDate();
-//
-//
-//
-//        return null;
-//    }
-
-//    @Override
-//    public boolean makeReservation(Client client, ReservationInfo request) {
-//        RoomInfo room = request.getRoomInfo();
-//        priceService.getPrice(room, LocalDate.now());
-//
-//        return false;
-//    }
-
-
+    
+    @Override
+    public void loadClients(CSVUtilsClients csvUtilsClients) {
+        clients.clear();
+        clients.addAll(csvUtilsClients.readCSV());
+    }
+    
+    @Override
+    public void saveClients(CSVUtilsClients csvUtilsClients){
+        csvUtilsClients.saveCSV(clients);
+    }
+    
+    @Override
+    public void addClient(int id, String firstName, String lastName, 
+            LocalDate birthDate, String login, String password, int nbOfReservations) {
+        boolean idIsUnique = clients.
+                parallelStream().
+                noneMatch(clientIdEqualTo(id));
+        
+        if(idIsUnique) {
+            clients.add(new Client(id, firstName, lastName, birthDate,
+                    login, password, 0));
+        }
+    }
+    
+    @Override
+    public void deleteClient(int id) {
+        clients.removeIf(clientIdEqualTo(id));
+    }
+    
+    @Override
+    public void loadEmployees(CSVUtilsEmployees csvUtilsEmployees){
+        employees.clear();
+        employees.addAll(csvUtilsEmployees.readCSV());
+    }
+    
+    @Override
+    public void saveEmployees(CSVUtilsEmployees csvUtilsEmployees){
+        csvUtilsEmployees.saveCSV(employees);
+    }
+    
+    @Override
+    public void addEmployees(int id, String firstName, String lastName, 
+            LocalDate birthDate, String login, String password){
+        boolean idIsUnique = employees.
+                parallelStream().
+                noneMatch(employeeIdEqualTo(id));
+        
+        if(idIsUnique) {
+            employees.add(new Employee(id, firstName, lastName, birthDate,
+                    login, password));
+        }
+    }
+    
+    @Override
+    public void deleteEmployees(int id){
+        employees.removeIf(employeeIdEqualTo(id));
+    }
+    
     public List<RoomInfo> getRooms() {
         return roomInfoStore;
+    }
+    
+    public List<Client> getClients() {
+        return clients;
+    }
+    
+    public List<Employee> getEmployees(){
+        return employees;
     }
     
     private Predicate<RoomInfo> nameEqualTo(String name) {
         return roomInfo -> Objects.equals(roomInfo.getRoomName(), name);
     }
+    
+    private Predicate<Client> clientIdEqualTo(int id) {
+        return client -> Objects.equals(client.getId(), id);
+    }
+    
+    private Predicate<Employee> employeeIdEqualTo(int id){
+        return employee -> Objects.equals(employee.getId(), id);
+    }
 }
-
-//class RoomInfoCsvDeserializer extends CsvDeserializerImpl<RoomInfo> {
-//    RoomInfoCsvDeserializer() {
-//        super(RoomInfo.class);
-//    }
-//}
-//
-//class RoomInfoCsvSerializer extends CsvSerializerImpl<RoomInfo> {
-//    RoomInfoCsvSerializer() {
-//        super(RoomInfo.class);
-//    }
-//}

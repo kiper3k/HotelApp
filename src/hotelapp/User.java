@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * @author Marta Motyka
  * @since 21.11.2017
  */
-public class User {
+public abstract class User {
     private int id;
     private String firstName;
     private String lastName;
@@ -14,9 +14,6 @@ public class User {
     private String login;
     private String password;
 //    private Privileges privileges = Privileges.ADMIN;
-
-    private User() {
-    }
     
     public User(int id, String firstName, String lastName,LocalDate birthDate,
             String login, String password) {
@@ -77,14 +74,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-//    public Privileges getPrivileges() {
-//        return privileges;
-//    }
-//
-//    public void setPrivileges(Privileges privileges) {
-//        this.privileges = privileges;
-//    }
     
     @Override
     public String toString() {

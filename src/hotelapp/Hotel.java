@@ -3,6 +3,7 @@ package hotelapp;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -11,42 +12,25 @@ import java.util.List;
  */
 public interface Hotel {
 
-//    void loadRooms(Reader reader) throws IOException;
     void loadRooms(CSVUtilsRooms csvUtilsRooms) throws IOException;
-
     void saveRooms(CSVUtilsRooms csvUtilsRooms) throws IOException;
-
-    /**
-     * Adds new room.
-     *
-     * @param name    is a name of the room
-     * @param nOfBeds is a number of beds in room
-     * @param price
-     */
     void addRoom(String name, int nOfBeds, float price);
-
-    /**
-     * Deletes room.
-     *
-     * @param name is a name of the room
-     */
     void deleteRoom(String name);
+    
+    void loadClients(CSVUtilsClients csvUtilsClients);
+    void saveClients(CSVUtilsClients csvUtilsClients);
+    void addClient(int id, String firstName, String lastName, 
+            LocalDate birthDate, String login, String password, int nbOfReservations);
+    void deleteClient(int id);
+    
+    void loadEmployees(CSVUtilsEmployees csvUtilsEmployees);
+    void saveEmployees(CSVUtilsEmployees csvUtilsEmployees);
+    void addEmployees(int id, String firstName, String lastName, 
+            LocalDate birthDate, String login, String password);
+    void deleteEmployees(int id);
 
-    /**
-     * @param period jest okresem w którym chcemy zarezerwować pokoje
-     * @param rooms  jest listą liczb określających ile osób chcemy zakwaterować w pokoju np.: {1, 2} oznacza, że
-     *               potrzebujemy pokoju dla jednej osoby i drugiego pokoju dla dwóch osób
-     * @return
-     */
 //    List<ReservationInfo> findFreeRooms(Period period, List<Integer> rooms);
 
-    /**
-     * Makes reservation for client using Client and ReservationInfo.
-     *
-     * @param client is an information about client
-     * @param request is an information about reservation
-     * @return
-     */
 //    boolean makeReservation(Client client, ReservationInfo request);
 
 }

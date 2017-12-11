@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Marta Motyka
  * @since 14.11.2017
  */
-public class Client {
+public class Client extends User {
     
     private int id;
     private String firstName;
@@ -15,33 +15,20 @@ public class Client {
     private LocalDate birthDate;
     private String login;
     private String password;
-//    private Privileges privileges = Privileges.CLIENT;
+//    User user;
+    private Privileges privileges;
+    private int nbOfReservations;
     
-    private String email;
-    private String address;
+    
+//    private String email;
+//    private String address;
 
-    private Client() {
-    }
-
-    public Client(String firstName, String lastName, String email, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-    }
     
     public Client(int id, String firstName, String lastName, LocalDate birthDate,
-            String login, String password) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.login = login;
-        this.password = password;
-    }
-
-    public static Builder builder() {
-        return new Builder();
+            String login, String password, int nbOfReservations) {
+        super(id, firstName, lastName, birthDate, login, password);
+        this.privileges = Privileges.CLIENT;
+        this.nbOfReservations = nbOfReservations;
     }
     
     public int getId(){
@@ -50,22 +37,6 @@ public class Client {
     
     public void setId(int id){
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getFirstName() {
@@ -107,15 +78,30 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public Privileges getPrivileges(){
+        return this.privileges;
+    }
+    
+    public void setPrivileges(Privileges privileges){
+        this.privileges = privileges;
+    }
+    
+    public int getNbOfReservations(){
+        return nbOfReservations;
+    }
+    
+    public void setNbOfReservations(int nbOfReservations){
+        this.nbOfReservations = nbOfReservations;
+    }
 
     
     @Override
     public String toString() {
         return "Client{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                "id=" + this.id + '\'' +
+                ", firstName='" + this.firstName + '\'' +
+                ", lastName='" + this.lastName + '\'' +
                 '}';
     }
     
@@ -125,15 +111,17 @@ public class Client {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return Objects.equals(firstName, client.firstName) &&
-                Objects.equals(lastName, client.lastName) &&
-                Objects.equals(email, client.email) &&
-                Objects.equals(address, client.address);
+                Objects.equals(lastName, client.lastName);
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(firstName, lastName, email, address);
+//    @Override
+//    public int hashCode() {
+//
+//        return Objects.hash(firstName, lastName, email, address);
+//    }
+    
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
@@ -165,9 +153,9 @@ public class Client {
             return this;
         }
 
-        public Client build() {
-            return new Client(firstName, lastName, email, address);
-        }
+//        public Client build() {
+//            return new Client(firstName, lastName, email, address);
+//        }
     }
 }
 

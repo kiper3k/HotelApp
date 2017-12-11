@@ -8,6 +8,7 @@ package hotelapp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,50 +28,78 @@ public class HotelApp {
         HotelImpl hotel = new HotelImpl();
         
         CSVUtilsRooms csvUtilsRooms = new CSVUtilsRooms();
-//        rooms = csvUtilsRooms.readCSV();
+        CSVUtilsClients csvUtilsClients = new CSVUtilsClients();
+        CSVUtilsEmployees csvUtilsEmployees = new CSVUtilsEmployees();
+        
         hotel.loadRooms(csvUtilsRooms);
+        hotel.loadClients(csvUtilsClients);
+        hotel.loadEmployees(csvUtilsEmployees);
         
         List<RoomInfo> rooms = new ArrayList<>();
         rooms = hotel.getRooms();
-        for(int i=0; i<rooms.size(); i++){ 
+        for(int i=0; i<rooms.size(); i++){
             System.out.println(rooms.get(i));
+        } 
+
+        List<Client> clients = new ArrayList<>();
+        clients = hotel.getClients();
+        for(int i=0; i<clients.size(); i++){
+            System.out.println(clients.get(i));
         }
         
-        hotel.saveRooms(csvUtilsRooms);
-        
-        
-
-        CSVUtilsUsers csvUtilsUsers = new CSVUtilsUsers();
-        List<User> users = new ArrayList<>();
-        users = csvUtilsUsers.readCSV();
-        
-        users = csvUtilsUsers.readCSV();
-        for(int i=0; i<users.size(); i++){
-            System.out.println(users.get(i));
+        List<Employee> employees = new ArrayList<>();
+        employees = hotel.getEmployees();
+        for(int i=0; i<employees.size(); i++){
+            System.out.println(employees.get(i));
         }
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input;
         String[] room;
+        String[] client;
         OUTER:
         while (true) {
             input = br.readLine();
             switch (input) {
-                case "add":
+                case "add room":
                     System.out.println("Enter room info:");
                     room = br.readLine().split(" ");
 //                    hotel.addRoom("Room4", 3, 500);
                     hotel.addRoom(room[0], Integer.parseInt(room[1]), Float.parseFloat(room[2]));
                     break;
-                case "remove":
+                case "remove room":
+                    System.out.println("Enter room name:");
                     room = br.readLine().split(" ");
                     hotel.deleteRoom(room[0]);
+                    break;
                 case "rooms":
                     rooms = hotel.getRooms();
                     for(int i=0; i<rooms.size(); i++){
                         System.out.println(rooms.get(i));
-                    }   break;
+                    }   
+                    break;
+                case "add client":
+                    System.out.println("Enter client info:");
+                    client = br.readLine().split(" ");
+                    hotel.addClient(Integer.parseInt(client[0]), client[1], client[2], 
+                            LocalDate.parse(client[3]), client[4], client[5], 0);
+                    break;
+                case "clients":
+                    for(int i=0; i<hotel.getClients().size(); i++) {
+                        System.out.println(hotel.getClients().get(i));
+                    }
+                    break;
+                case "employees":
+                    for(int i=0; i<hotel.getClients().size(); i++) {
+                        System.out.println(hotel.getClients().get(i));
+                    }
+                    break;
+                case "users":
+                    for(int i=0; i<clients.size(); i++){
+                        System.out.println(clients.get(i));
+                    }
+                    break;
                 case "exit":
                     hotel.saveRooms(csvUtilsRooms);
                     break OUTER;

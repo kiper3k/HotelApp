@@ -45,6 +45,7 @@ public class CSVUtilsClients {
         LocalDate birthDate;
         String login;
         String password;
+        int nbOfReservations;
         
         try {
 
@@ -59,12 +60,11 @@ public class CSVUtilsClients {
                 birthDate = LocalDate.parse(client[3]);
                 login = client[4];
                 password = client[5];
-//                System.out.println(new Room(Integer.parseInt(room[0]),
-//                        Integer.parseInt(room[1]), 
-//                        Float.parseFloat(room[2])));
+                nbOfReservations = Integer.parseInt(client[6]);
+//                System.out.println(client[0] + client[2]);
                 
                 clients.add(new Client(id, firstName, lastName, birthDate,
-                        login, password));
+                        login, password, nbOfReservations));
 
             }
 
@@ -95,13 +95,14 @@ public class CSVUtilsClients {
         LocalDate birthDate;
         String login;
         String password;
+        int nbOfReservations;
         
         String line;
         
         try {
 
             bw = new BufferedWriter(new FileWriter(csvFile));
-            line = "id,firstName,lastName,birthDate,login,password";
+            line = "id,firstName,lastName,birthDate,login,password,nbOfReservations";
             bw.write(line, 0, line.length());
             bw.newLine();
             for (int i=0; i<clients.size(); i++){
@@ -111,6 +112,7 @@ public class CSVUtilsClients {
                 birthDate = clients.get(i).getBirthDate();
                 login = clients.get(i).getLogin();
                 password = clients.get(i).getPassword();
+                nbOfReservations = clients.get(i).getNbOfReservations();
                 
                 line = Integer.toString(id) + "," + firstName + "," + lastName
                         + "," + birthDate + "," + login + "," + password;
