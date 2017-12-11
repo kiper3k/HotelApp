@@ -40,10 +40,10 @@ public class Employee extends User {
     
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + this.id + '\'' +
-                ", firstName='" + this.firstName + '\'' +
-                ", lastName='" + this.lastName + '\'' +
+        return "Client{" +
+                "id=" + getSuperId() + '\'' +
+                ", firstName='" + getSuperFirstName() + '\'' +
+                ", lastName='" + getSuperLastName() + '\'' +
                 '}';
     }
     

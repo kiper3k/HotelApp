@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author kiper
  */
-public class CSVUtilsClients {
+public class CSVUtilsClients implements CSVUtils {
     BufferedReader br = null;
     
     String csvFile;

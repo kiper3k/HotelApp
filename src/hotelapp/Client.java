@@ -99,9 +99,9 @@ public class Client extends User {
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + this.id + '\'' +
-                ", firstName='" + this.firstName + '\'' +
-                ", lastName='" + this.lastName + '\'' +
+                "id=" + getSuperId() + '\'' +
+                ", firstName='" + getSuperFirstName() + '\'' +
+                ", lastName='" + getSuperLastName() + '\'' +
                 '}';
     }
     

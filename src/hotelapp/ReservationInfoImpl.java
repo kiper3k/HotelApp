@@ -13,6 +13,15 @@ public class ReservationInfoImpl implements ReservationInfo {
     private RoomInfo roomInfo;
     
     private int reservationId;
+
+    @Override
+    public int getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
+    }
     private LocalDate startDate;
     private LocalDate endDate;
     private int clientId;
@@ -26,7 +35,12 @@ public class ReservationInfoImpl implements ReservationInfo {
 
     ReservationInfoImpl(int reservationId, LocalDate startDate, LocalDate endDate, 
             int clientId, String roomName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.reservationId = reservationId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.clientId = clientId;
+        this.roomName = roomName;
+        
     }
 
     @Override
@@ -41,6 +55,10 @@ public class ReservationInfoImpl implements ReservationInfo {
 
     @Override
     public long getClientId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return clientId;
+    }
+    
+    public String toString(){
+        return "Id: " + this.reservationId + this.startDate + this.endDate;
     }
 }

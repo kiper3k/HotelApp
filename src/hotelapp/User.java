@@ -26,6 +26,18 @@ public abstract class User {
 //        this.privileges = privileges;
     }
     
+    public int getSuperId(){
+        return this.id;
+    }
+    
+    public String getSuperFirstName(){
+        return this.firstName;
+    }
+    
+    public String getSuperLastName(){
+        return this.lastName;
+    }
+    
     public int getId(){
         return id;
     }

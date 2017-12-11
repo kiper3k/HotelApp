@@ -9,4 +9,6 @@ public interface ReservationInfo {
     RoomInfo getRoomInfo();
 
     long getClientId();
+    
+    int getReservationId();
 }

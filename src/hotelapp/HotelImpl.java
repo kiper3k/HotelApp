@@ -17,7 +17,7 @@ public class HotelImpl implements Hotel {
     private final List<RoomInfo> roomInfoStore = new ArrayList<>();
     private final List<Client> clients = new ArrayList<>();
     private final List<Employee> employees = new ArrayList<>();
-    private final List reservations = new ArrayList<>();
+    private final List<ReservationInfo> reservations = new ArrayList<>();
 
     @Override
     public void loadRooms(CSVUtilsRooms csvUtilsRooms) throws IOException {
@@ -111,6 +111,35 @@ public class HotelImpl implements Hotel {
         employees.removeIf(employeeIdEqualTo(id));
     }
     
+//    @Override
+    public void loadReservations(CVSUtilsReservations csvUtilsReservations){
+        employees.clear();
+        employees.addAll(csvUtilsReservations.readCSV());
+    }
+    
+    @Override
+    public void saveReservations(CVSUtilsReservations csvUtilsReservations){
+        csvUtilsReservations.saveCSV(reservations);
+    }
+    
+    @Override
+    public void addReservations(int reservationId, LocalDate startDate, 
+            LocalDate endDate, int clientId){
+        boolean idIsUnique = employees.
+                parallelStream().
+                noneMatch(employeeIdEqualTo(reservationId));
+        
+        if(idIsUnique) {
+//            reservations.add(new ReservationInfo(reservationId, startDate,
+//                    endDate, clientId));
+        }
+    }
+    
+    @Override
+    public void deleteReservations(int id){
+        reservations.removeIf(reservationIdEqualTo(id));
+    }
+    
     public List<RoomInfo> getRooms() {
         return roomInfoStore;
     }
@@ -123,6 +152,10 @@ public class HotelImpl implements Hotel {
         return employees;
     }
     
+    public List<ReservationInfo> getReservations(){
+        return reservations;
+    }
+    
     private Predicate<RoomInfo> nameEqualTo(String name) {
         return roomInfo -> Objects.equals(roomInfo.getRoomName(), name);
     }
@@ -133,5 +166,9 @@ public class HotelImpl implements Hotel {
     
     private Predicate<Employee> employeeIdEqualTo(int id){
         return employee -> Objects.equals(employee.getId(), id);
+    }
+    
+    private Predicate<ReservationInfo> reservationIdEqualTo(int id){
+        return reservationInfo -> Objects.equals(reservationInfo.getReservationId(), id);
     }
 }

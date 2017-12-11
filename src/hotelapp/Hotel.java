@@ -28,6 +28,12 @@ public interface Hotel {
     void addEmployees(int id, String firstName, String lastName, 
             LocalDate birthDate, String login, String password);
     void deleteEmployees(int id);
+    
+    public void loadReservations(CVSUtilsReservations csvUtilsReservations);
+    public void saveReservations(CVSUtilsReservations csvUtilsReservations);
+    public void addReservations(int reservationId, LocalDate startDate, 
+            LocalDate endDate, int clientId);
+    public void deleteReservations(int id);
 
 //    List<ReservationInfo> findFreeRooms(Period period, List<Integer> rooms);
 

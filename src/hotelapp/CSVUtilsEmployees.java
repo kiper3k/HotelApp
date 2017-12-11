@@ -20,7 +20,7 @@ import java.time.LocalDate;
  *
  * @author kiper
  */
-public class CSVUtilsEmployees {
+public class CSVUtilsEmployees implements CSVUtils {
     
     BufferedReader br = null;
     
