@@ -14,12 +14,12 @@ import java.util.Objects;
  */
 public class Employee extends User {
         
-    private int id;
-    private String firstName;
-    private String lastName;
-    private LocalDate birthDate;
-    private String login;
-    private String password;
+//    private int id;
+//    private String firstName;
+//    private String lastName;
+//    private LocalDate birthDate;
+//    private String login;
+//    private String password;
 
     Privileges privileges;
 
@@ -40,20 +40,20 @@ public class Employee extends User {
     
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + getSuperId() + '\'' +
-                ", firstName='" + getSuperFirstName() + '\'' +
-                ", lastName='" + getSuperLastName() + '\'' +
+        return "Employee{" +
+                "id=" + getId() + '\'' +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
                 '}';
     }
     
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(firstName, employee.firstName) &&
-                Objects.equals(lastName, employee.lastName);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Employee employee = (Employee) o;
+//        return Objects.equals(this.getFirstName(), employee.getFirstName()) &&
+//                Objects.equals(this.getLastName(), employee.getLastName());
+//    }
     
 }

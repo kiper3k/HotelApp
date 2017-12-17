@@ -100,9 +100,6 @@ public class HotelImpl implements Hotel {
                 noneMatch(employeeIdEqualTo(id));
         
         if(idIsUnique) {
-//            User user = new User(id, firstName, lastName, birthDate,
-//                    login, password) {};
-//            employees.add(new Employee(user));
             employees.add(new Employee(id, firstName, lastName, birthDate,
                     login, password));
         }

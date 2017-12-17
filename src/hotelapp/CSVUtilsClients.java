@@ -118,7 +118,6 @@ public class CSVUtilsClients implements CSVUtils {
                         + "," + birthDate + "," + login + "," + password
                         + "," + nbOfReservations;
                 
-                System.out.println(line);
                 
                 bw.write(line, 0, line.length());
                 bw.newLine();

@@ -1,4 +1,4 @@
-id,firstName,lastName,birthDate
+id,firstName,lastName,birthDate,login,password
 1,Jan,Kowalski,1984-05-20
 2,Mateusz,Kwiatkowski,1990-01-12
 1,Jan,Kowalski,1984-05-20,janek,123,0
