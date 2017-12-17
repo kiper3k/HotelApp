@@ -47,13 +47,21 @@ public class Employee extends User {
                 '}';
     }
     
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Employee employee = (Employee) o;
-//        return Objects.equals(this.getFirstName(), employee.getFirstName()) &&
-//                Objects.equals(this.getLastName(), employee.getLastName());
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(this.getFirstName(), employee.getFirstName()) &&
+                Objects.equals(this.getLastName(), employee.getLastName()) &&
+                Objects.equals(this.getLogin(), employee.getLogin());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.privileges);
+        return hash;
+    }
     
 }

@@ -55,16 +55,6 @@ public class RoomInfoImpl implements RoomInfo {
         }
     }
 
-//    @Override
-//    public int getNumberOfOccupiedBeds() {
-//        return numberOfOccupiedBeds;
-//    }
-//
-//    @Override
-//    public void setNumberOfOccupiedBeds(int numberOfOccupiedBeds) {
-//        this.numberOfOccupiedBeds = numberOfOccupiedBeds;
-//    }
-
     @Override
     public float getPrice() {
         return price;

@@ -31,55 +31,6 @@ public class Client extends User {
         this.nbOfReservations = nbOfReservations;
     }
     
-    
-//    public int getId(){
-//        return id;
-//    }
-//    
-//    public void setId(int id){
-//        this.id = id;
-//    }
-//
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//    
-//    public LocalDate getBirthDate() {
-//        return birthDate;
-//    }
-//
-//    public void setBirthDate(LocalDate birthDate) {
-//        this.birthDate = birthDate;
-//    }
-//    
-//    public String getLogin(){
-//        return this.login;
-//    }
-//    
-//    public void setLogin(String login){
-//        this.login = login;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-    
     public Privileges getPrivileges(){
         return this.privileges;
     }
@@ -106,14 +57,22 @@ public class Client extends User {
                 '}';
     }
     
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Client client = (Client) o;
-//        return Objects.equals(this.getFirstName(), client.getFirstName()) &&
-//                Objects.equals(this.getFirstName(), client.getLastName()) &&
-//                Objects.equals(this.getLogin(), client.getLogin());
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(this.getFirstName(), client.getFirstName()) &&
+                Objects.equals(this.getFirstName(), client.getLastName()) &&
+                Objects.equals(this.getLogin(), client.getLogin());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.privileges);
+        hash = 53 * hash + this.nbOfReservations;
+        return hash;
+    }
 }
 
