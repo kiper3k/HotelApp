@@ -31,9 +31,9 @@ public interface Hotel {
     
     public void loadReservations(CVSUtilsReservations csvUtilsReservations);
     public void saveReservations(CVSUtilsReservations csvUtilsReservations);
-    public void addReservations(int reservationId, LocalDate startDate, 
-            LocalDate endDate, int clientId);
-    public void deleteReservations(int id);
+    public void addReservation(int reservationId, LocalDate startDate, 
+            LocalDate endDate, int clientId, String roomName);
+    public void deleteReservation(int id);
 
 //    List<ReservationInfo> findFreeRooms(Period period, List<Integer> rooms);
 

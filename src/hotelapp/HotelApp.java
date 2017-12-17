@@ -30,12 +30,12 @@ public class HotelApp {
         CSVUtilsRooms csvUtilsRooms = new CSVUtilsRooms();
         CSVUtilsClients csvUtilsClients = new CSVUtilsClients();
         CSVUtilsEmployees csvUtilsEmployees = new CSVUtilsEmployees();
-//        CVSUtilsReservations csvUtilsReservations = new CVSUtilsReservations();
+        CVSUtilsReservations csvUtilsReservations = new CVSUtilsReservations();
         
         hotel.loadRooms(csvUtilsRooms);
         hotel.loadClients(csvUtilsClients);
         hotel.loadEmployees(csvUtilsEmployees);
-//        hotel.loadReservations(csvUtilsReservations);
+        hotel.loadReservations(csvUtilsReservations);
         
 //        List<RoomInfo> rooms = new ArrayList<>();
 //        rooms = hotel.getRooms();
@@ -54,6 +54,12 @@ public class HotelApp {
 //        for(int i=0; i<employees.size(); i++){
 //            System.out.println(employees.get(i));
 //        }
+//
+//        List<ReservationInfo> reservations = new ArrayList<>();
+//        reservations = hotel.getReservations();
+//        for(int i=0; i<reservations.size(); i++){
+//            System.out.println(reservations.get(i));
+//        }
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -61,6 +67,7 @@ public class HotelApp {
         String[] room;
         String[] client;
         String[] employee;
+        String[] reservation;
         OUTER:
         while (true) {
             input = br.readLine();
@@ -104,16 +111,23 @@ public class HotelApp {
                         System.out.println(hotel.getEmployees().get(i));
                     }
                     break;
-//                case "reservations":
-//                    for(int i=0; i<hotel.getReservations().size(); i++) {
-//                        System.out.println(hotel.getReservations().get(i));
-//                    }
-//                    break;
+                case "add reservation":
+                    System.out.println("Enter reservation info:");
+                    reservation = br.readLine().split(" ");
+                    hotel.addReservation(Integer.parseInt(reservation[0]),
+                            LocalDate.parse(reservation[1]),
+                            LocalDate.parse(reservation[2]),
+                            Integer.parseInt(reservation[3]), reservation[4]);
+                case "reservations":
+                    for(int i=0; i<hotel.getReservations().size(); i++) {
+                        System.out.println(hotel.getReservations().get(i));
+                    }
+                    break;
                 case "exit":
                     hotel.saveRooms(csvUtilsRooms);
                     hotel.saveClients(csvUtilsClients);
                     hotel.saveEmployees(csvUtilsEmployees);
-//                    hotel.saveReservations(csvUtilsReservations);
+                    hotel.saveReservations(csvUtilsReservations);
                     break OUTER;
                 default:
                     break;

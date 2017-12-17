@@ -110,10 +110,10 @@ public class HotelImpl implements Hotel {
         employees.removeIf(employeeIdEqualTo(id));
     }
     
-//    @Override
+    @Override
     public void loadReservations(CVSUtilsReservations csvUtilsReservations){
-        employees.clear();
-        employees.addAll(csvUtilsReservations.readCSV());
+        reservations.clear();
+        reservations.addAll(csvUtilsReservations.readCSV());
     }
     
     @Override
@@ -122,20 +122,20 @@ public class HotelImpl implements Hotel {
     }
     
     @Override
-    public void addReservations(int reservationId, LocalDate startDate, 
-            LocalDate endDate, int clientId){
-        boolean idIsUnique = employees.
+    public void addReservation(int reservationId, LocalDate startDate, 
+            LocalDate endDate, int clientId, String roomName){
+        boolean idIsUnique = reservations.
                 parallelStream().
-                noneMatch(employeeIdEqualTo(reservationId));
+                noneMatch(reservationIdEqualTo(reservationId));
         
         if(idIsUnique) {
-//            reservations.add(new ReservationInfo(reservationId, startDate,
-//                    endDate, clientId));
+            reservations.add(new ReservationInfoImpl(reservationId, startDate,
+                    endDate, clientId, roomName));
         }
     }
     
     @Override
-    public void deleteReservations(int id){
+    public void deleteReservation(int id){
         reservations.removeIf(reservationIdEqualTo(id));
     }
     

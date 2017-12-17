@@ -8,12 +8,15 @@ import java.time.LocalDate;
  */
 public class ReservationInfoImpl implements ReservationInfo {
 
-    private Period period;
-
-    private RoomInfo roomInfo;
+//    private Period period;
+//    private RoomInfo roomInfo;
     
     private int reservationId;
-
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int clientId;
+    private String roomName;
+    
     @Override
     public int getReservationId() {
         return reservationId;
@@ -22,16 +25,49 @@ public class ReservationInfoImpl implements ReservationInfo {
     public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
     }
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private int clientId;
-    
-    private String roomName;
 
-    public ReservationInfoImpl(Period period, RoomInfo roomInfo) {
-        this.period = period;
-        this.roomInfo = roomInfo;
+    @Override
+    public LocalDate getStartDate() {
+        return startDate;
     }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    @Override
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+    
+    @Override
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    
+
+//    public ReservationInfoImpl(Period period, RoomInfo roomInfo) {
+//        this.period = period;
+//        this.roomInfo = roomInfo;
+//    }
 
     ReservationInfoImpl(int reservationId, LocalDate startDate, LocalDate endDate, 
             int clientId, String roomName) {
@@ -42,23 +78,11 @@ public class ReservationInfoImpl implements ReservationInfo {
         this.roomName = roomName;
         
     }
-
-    @Override
-    public Period getPeriod() {
-        return period;
-    }
-
-    @Override
-    public RoomInfo getRoomInfo() {
-        return roomInfo;
-    }
-
-    @Override
-    public long getClientId() {
-        return clientId;
-    }
     
+    @Override
     public String toString(){
-        return "Id: " + this.reservationId + this.startDate + this.endDate;
+        return "Id: " + this.reservationId + "\tStart date: " + this.startDate 
+                + "\tEnd date: " + this.endDate + "\tClient id: " 
+                + this.clientId + "\tRoom: " + this.roomName;
     }
 }

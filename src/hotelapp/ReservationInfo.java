@@ -1,14 +1,17 @@
 package hotelapp;
 
+import java.time.LocalDate;
+
 /**
  * @author kiper
  */
 public interface ReservationInfo {
-    Period getPeriod();
+//    Period getPeriod();
+//    RoomInfo getRoomInfo();
 
-    RoomInfo getRoomInfo();
-
-    long getClientId();
-    
     int getReservationId();
+    LocalDate getStartDate();
+    LocalDate getEndDate();
+    int getClientId();
+    String getRoomName();
 }

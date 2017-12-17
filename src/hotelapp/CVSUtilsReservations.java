@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,8 +85,51 @@ public class CVSUtilsReservations implements CSVUtils {
         return reservations;
     }
     
-    public void saveCSV(List reservations){
+    public void saveCSV(List<ReservationInfo> reservations){
         
+        int reservationId;
+        LocalDate startDate;
+        LocalDate endDate;
+        int clientId;
+        String roomName;
+        
+        String line;
+        
+        try {
+
+            bw = new BufferedWriter(new FileWriter(csvFile));
+            line = "reservationId,startDate,endDat,clientId,roomName";
+            bw.write(line, 0, line.length());
+            bw.newLine();
+            for (int i=0; i<reservations.size(); i++){
+                reservationId = reservations.get(i).getReservationId();
+                startDate = reservations.get(i).getStartDate();
+                endDate = reservations.get(i).getEndDate();
+                clientId = reservations.get(i).getClientId();
+                roomName = reservations.get(i).getRoomName();
+                
+                line = reservationId + "," + startDate  + ","  + endDate + "," 
+                       + clientId + "," + roomName;
+                
+                bw.write(line, 0, line.length());
+                bw.newLine();
+            }
+            bw.close();
+            
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
     
     
