@@ -93,26 +93,26 @@ public class HotelApp {
                         System.out.println(hotel.getClients().get(i));
                     }
                     break;
-                case "add emloyee":
-                    System.out.println("Enter emloyee info:");
-                    employee = br.readLine().split(" ");
-                    hotel.addEmployees(Integer.parseInt(employee[0]), employee[1], employee[2], 
-                            LocalDate.parse(employee[3]), employee[4], employee[5]);
-                    break;
-                case "employees":
-                    for(int i=0; i<hotel.getEmployees().size(); i++) {
-                        System.out.println(hotel.getEmployees().get(i));
-                    }
-                    break;
-                case "reservations":
-                    for(int i=0; i<hotel.getReservations().size(); i++) {
-                        System.out.println(hotel.getReservations().get(i));
-                    }
-                    break;
+//                case "add emloyee":
+//                    System.out.println("Enter emloyee info:");
+//                    employee = br.readLine().split(" ");
+//                    hotel.addEmployees(Integer.parseInt(employee[0]), employee[1], employee[2], 
+//                            LocalDate.parse(employee[3]), employee[4], employee[5]);
+//                    break;
+//                case "employees":
+//                    for(int i=0; i<hotel.getEmployees().size(); i++) {
+//                        System.out.println(hotel.getEmployees().get(i));
+//                    }
+//                    break;
+//                case "reservations":
+//                    for(int i=0; i<hotel.getReservations().size(); i++) {
+//                        System.out.println(hotel.getReservations().get(i));
+//                    }
+//                    break;
                 case "exit":
                     hotel.saveRooms(csvUtilsRooms);
                     hotel.saveClients(csvUtilsClients);
-                    hotel.saveEmployees(csvUtilsEmployees);
+//                    hotel.saveEmployees(csvUtilsEmployees);
 //                    hotel.saveReservations(csvUtilsReservations);
                     break OUTER;
                 default:

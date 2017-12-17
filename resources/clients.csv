@@ -1,1 +1,4 @@
 id,firstName,lastName,birthDate,login,password,nbOfReservations
+1,Jan,Kowalski,1984-05-20,janek,123,0
+2,Mateusz,Kwiatkowski,1990-01-12,mat,345,1
+3,Mateusz,Nowak,1980-12-12,mat,123,0

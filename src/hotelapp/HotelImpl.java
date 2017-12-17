@@ -68,6 +68,8 @@ public class HotelImpl implements Hotel {
                 parallelStream().
                 noneMatch(clientIdEqualTo(id));
         
+//        System.out.println(idIsUnique);
+        
         if(idIsUnique) {
             clients.add(new Client(id, firstName, lastName, birthDate,
                     login, password, 0));
@@ -161,7 +163,7 @@ public class HotelImpl implements Hotel {
     }
     
     private Predicate<Client> clientIdEqualTo(int id) {
-        return client -> Objects.equals(client.getId(), id);
+        return client -> Objects.equals(client.getSuperId(), id);
     }
     
     private Predicate<Employee> employeeIdEqualTo(int id){

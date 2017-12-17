@@ -115,7 +115,10 @@ public class CSVUtilsClients implements CSVUtils {
                 nbOfReservations = clients.get(i).getNbOfReservations();
                 
                 line = Integer.toString(id) + "," + firstName + "," + lastName
-                        + "," + birthDate + "," + login + "," + password;
+                        + "," + birthDate + "," + login + "," + password
+                        + "," + nbOfReservations;
+                
+                System.out.println(line);
                 
                 bw.write(line, 0, line.length());
                 bw.newLine();
