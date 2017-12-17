@@ -14,6 +14,9 @@ import org.junit.Assert;
  * @author kiper
  */
 public class TestClient {
+
+    public TestClient() {
+    }
     
     public void testSetPrivileges(){
         Client client = new Client(2, "Monika", "Cabaj", 

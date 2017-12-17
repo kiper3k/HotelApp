@@ -11,5 +11,8 @@ package hotelapp;
  * @author kiper
  */
 public class TestEmployee {
+
+    public TestEmployee() {
+    }
     
 }

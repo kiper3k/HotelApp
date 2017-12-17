@@ -9,8 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -59,7 +57,7 @@ public class HotelApp {
 //        reservations = hotel.getReservations();
 //        for(int i=0; i<reservations.size(); i++){
 //            System.out.println(reservations.get(i));
-//        }
+//        }        
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
