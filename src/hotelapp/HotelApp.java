@@ -116,6 +116,11 @@ public class HotelApp {
                             LocalDate.parse(reservation[1]),
                             LocalDate.parse(reservation[2]),
                             Integer.parseInt(reservation[3]), reservation[4]);
+                case "delete reservation":
+                    System.out.println("Enter id:");
+                    reservation = br.readLine().split(" ");
+                    hotel.deleteReservation(Integer.parseInt(reservation[0]));
+                    break;
                 case "reservations":
                     for(int i=0; i<hotel.getReservations().size(); i++) {
                         System.out.println(hotel.getReservations().get(i));
