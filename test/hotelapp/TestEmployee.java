@@ -1,6 +1,7 @@
 package hotelapp;
 import java.time.LocalDate;
 import org.junit.Assert;
+import org.junit.Test;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,6 +17,8 @@ public class TestEmployee {
 
     public TestEmployee() {
     }
+    
+    @Test
      public void testSetPrivileges(){
         Employee employee = new Employee(1, "Jan", "Kowalski", 
                 LocalDate.parse("1984-05-20"), "janko", "876");

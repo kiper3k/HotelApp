@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/test/hotelapp/TestClient.java</file>
             <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/src/hotelapp/HotelApp.java</file>
-            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/src/hotelapp/Employee.java</file>
-            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/src/hotelapp/HotelImpl.java</file>
+            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/src/hotelapp/Client.java</file>
+            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/test/hotelapp/TestUser.java</file>
+            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/test/hotelapp/TestEmployee.java</file>
+            <file>file:/home/kiper/Dokumenty/UJ/Projektowanie%20obiektowe/HotelApp/src/hotelapp/User.java</file>
         </group>
     </open-files>
 </project-private>
